@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="iov.spring.dao.DeviceMapper">
+  <resultMap id="BaseResultMap" type="iov.spring.entity.Device">
+    <id column="n_id" jdbcType="INTEGER" property="id" />
+    <result column="c_model" jdbcType="VARCHAR" property="model" />
+    <result column="c_imei" jdbcType="VARCHAR" property="imei" />
+    <result column="c_uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="c_mid" jdbcType="VARCHAR" property="mid" />
+    <result column="c_imsi" jdbcType="VARCHAR" property="imsi" />
+    <result column="c_iccid" jdbcType="VARCHAR" property="iccid" />
+    <result column="c_sim_state" jdbcType="VARCHAR" property="simState" />
+    <result column="c_phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="c_phone_type" jdbcType="VARCHAR" property="phoneType" />
+    <result column="c_hard_ver" jdbcType="VARCHAR" property="hardVer" />
+    <result column="c_screen" jdbcType="VARCHAR" property="screen" />
+    <result column="c_rom" jdbcType="VARCHAR" property="rom" />
+    <result column="c_sdcard" jdbcType="VARCHAR" property="sdcard" />
+    <result column="c_mac" jdbcType="VARCHAR" property="mac" />
+    <result column="c_network" jdbcType="VARCHAR" property="network" />
+    <result column="c_network_name" jdbcType="VARCHAR" property="networkName" />
+    <result column="c_bssid" jdbcType="VARCHAR" property="bssid" />
+    <result column="c_network_extra" jdbcType="VARCHAR" property="networkExtra" />
+    <result column="c_build_id" jdbcType="VARCHAR" property="buildId" />
+    <result column="c_build_display" jdbcType="VARCHAR" property="buildDisplay" />
+    <result column="c_build_time" jdbcType="VARCHAR" property="buildTime" />
+    <result column="c_build_fp" jdbcType="VARCHAR" property="buildFp" />
+    <result column="c_lac" jdbcType="VARCHAR" property="lac" />
+    <result column="c_region_code" jdbcType="VARCHAR" property="regionCode" />
+    <result column="n_lng" jdbcType="DOUBLE" property="lng" />
+    <result column="n_lat" jdbcType="DOUBLE" property="lat" />
+    <result column="t_create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="t_prev_time" jdbcType="TIMESTAMP" property="prevTime" />
+    <result column="t_last_time" jdbcType="TIMESTAMP" property="lastTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    n_id, c_model, c_imei, c_uuid, c_mid, c_imsi, c_iccid, c_sim_state, c_phone_number, 
+    c_phone_type, c_hard_ver, c_screen, c_rom, c_sdcard, c_mac, c_network, c_network_name, 
+    c_bssid, c_network_extra, c_build_id, c_build_display, c_build_time, c_build_fp, 
+    c_lac, c_region_code, n_lng, n_lat, t_create_time, t_prev_time, t_last_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iov_device
+    where n_id = #{id,jdbcType=INTEGER}
+   
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from iov_device
+    where n_id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="iov.spring.entity.Device">
+    insert into iov_device (n_id, c_model, c_imei, 
+      c_uuid, c_mid, c_imsi, c_iccid, 
+      c_sim_state, c_phone_number, c_phone_type, 
+      c_hard_ver, c_screen, c_rom, 
+      c_sdcard, c_mac, c_network, 
+      c_network_name, c_bssid, c_network_extra, 
+      c_build_id, c_build_display, c_build_time, 
+      c_build_fp, c_lac, c_region_code, 
+      n_lng, n_lat, t_create_time, 
+      t_prev_time, t_last_time)
+    values (#{id,jdbcType=INTEGER}, #{model,jdbcType=VARCHAR}, #{imei,jdbcType=VARCHAR}, 
+      #{uuid,jdbcType=VARCHAR}, #{mid,jdbcType=VARCHAR}, #{imsi,jdbcType=VARCHAR}, #{iccid,jdbcType=VARCHAR}, 
+      #{simState,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{phoneType,jdbcType=VARCHAR}, 
+      #{hardVer,jdbcType=VARCHAR}, #{screen,jdbcType=VARCHAR}, #{rom,jdbcType=VARCHAR}, 
+      #{sdcard,jdbcType=VARCHAR}, #{mac,jdbcType=VARCHAR}, #{network,jdbcType=VARCHAR}, 
+      #{networkName,jdbcType=VARCHAR}, #{bssid,jdbcType=VARCHAR}, #{networkExtra,jdbcType=VARCHAR}, 
+      #{buildId,jdbcType=VARCHAR}, #{buildDisplay,jdbcType=VARCHAR}, #{buildTime,jdbcType=VARCHAR}, 
+      #{buildFp,jdbcType=VARCHAR}, #{lac,jdbcType=VARCHAR}, #{regionCode,jdbcType=VARCHAR}, 
+      #{lng,jdbcType=DOUBLE}, #{lat,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{prevTime,jdbcType=TIMESTAMP}, #{lastTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="iov.spring.entity.Device">
+    insert into iov_device
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        n_id,
+      </if>
+      <if test="model != null">
+        c_model,
+      </if>
+      <if test="imei != null">
+        c_imei,
+      </if>
+      <if test="uuid != null">
+        c_uuid,
+      </if>
+      <if test="mid != null">
+        c_mid,
+      </if>
+      <if test="imsi != null">
+        c_imsi,
+      </if>
+      <if test="iccid != null">
+        c_iccid,
+      </if>
+      <if test="simState != null">
+        c_sim_state,
+      </if>
+      <if test="phoneNumber != null">
+        c_phone_number,
+      </if>
+      <if test="phoneType != null">
+        c_phone_type,
+      </if>
+      <if test="hardVer != null">
+        c_hard_ver,
+      </if>
+      <if test="screen != null">
+        c_screen,
+      </if>
+      <if test="rom != null">
+        c_rom,
+      </if>
+      <if test="sdcard != null">
+        c_sdcard,
+      </if>
+      <if test="mac != null">
+        c_mac,
+      </if>
+      <if test="network != null">
+        c_network,
+      </if>
+      <if test="networkName != null">
+        c_network_name,
+      </if>
+      <if test="bssid != null">
+        c_bssid,
+      </if>
+      <if test="networkExtra != null">
+        c_network_extra,
+      </if>
+      <if test="buildId != null">
+        c_build_id,
+      </if>
+      <if test="buildDisplay != null">
+        c_build_display,
+      </if>
+      <if test="buildTime != null">
+        c_build_time,
+      </if>
+      <if test="buildFp != null">
+        c_build_fp,
+      </if>
+      <if test="lac != null">
+        c_lac,
+      </if>
+      <if test="regionCode != null">
+        c_region_code,
+      </if>
+      <if test="lng != null">
+        n_lng,
+      </if>
+      <if test="lat != null">
+        n_lat,
+      </if>
+      <if test="createTime != null">
+        t_create_time,
+      </if>
+      <if test="prevTime != null">
+        t_prev_time,
+      </if>
+      <if test="lastTime != null">
+        t_last_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="mid != null">
+        #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null">
+        #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="iccid != null">
+        #{iccid,jdbcType=VARCHAR},
+      </if>
+      <if test="simState != null">
+        #{simState,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneType != null">
+        #{phoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="hardVer != null">
+        #{hardVer,jdbcType=VARCHAR},
+      </if>
+      <if test="screen != null">
+        #{screen,jdbcType=VARCHAR},
+      </if>
+      <if test="rom != null">
+        #{rom,jdbcType=VARCHAR},
+      </if>
+      <if test="sdcard != null">
+        #{sdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="network != null">
+        #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="networkName != null">
+        #{networkName,jdbcType=VARCHAR},
+      </if>
+      <if test="bssid != null">
+        #{bssid,jdbcType=VARCHAR},
+      </if>
+      <if test="networkExtra != null">
+        #{networkExtra,jdbcType=VARCHAR},
+      </if>
+      <if test="buildId != null">
+        #{buildId,jdbcType=VARCHAR},
+      </if>
+      <if test="buildDisplay != null">
+        #{buildDisplay,jdbcType=VARCHAR},
+      </if>
+      <if test="buildTime != null">
+        #{buildTime,jdbcType=VARCHAR},
+      </if>
+      <if test="buildFp != null">
+        #{buildFp,jdbcType=VARCHAR},
+      </if>
+      <if test="lac != null">
+        #{lac,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=DOUBLE},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevTime != null">
+        #{prevTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null">
+        #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="iov.spring.entity.Device">
+    update iov_device
+    <set>
+      <if test="model != null">
+        c_model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="imei != null">
+        c_imei = #{imei,jdbcType=VARCHAR},
+      </if>
+      <if test="uuid != null">
+        c_uuid = #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="mid != null">
+        c_mid = #{mid,jdbcType=VARCHAR},
+      </if>
+      <if test="imsi != null">
+        c_imsi = #{imsi,jdbcType=VARCHAR},
+      </if>
+      <if test="iccid != null">
+        c_iccid = #{iccid,jdbcType=VARCHAR},
+      </if>
+      <if test="simState != null">
+        c_sim_state = #{simState,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        c_phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneType != null">
+        c_phone_type = #{phoneType,jdbcType=VARCHAR},
+      </if>
+      <if test="hardVer != null">
+        c_hard_ver = #{hardVer,jdbcType=VARCHAR},
+      </if>
+      <if test="screen != null">
+        c_screen = #{screen,jdbcType=VARCHAR},
+      </if>
+      <if test="rom != null">
+        c_rom = #{rom,jdbcType=VARCHAR},
+      </if>
+      <if test="sdcard != null">
+        c_sdcard = #{sdcard,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        c_mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="network != null">
+        c_network = #{network,jdbcType=VARCHAR},
+      </if>
+      <if test="networkName != null">
+        c_network_name = #{networkName,jdbcType=VARCHAR},
+      </if>
+      <if test="bssid != null">
+        c_bssid = #{bssid,jdbcType=VARCHAR},
+      </if>
+      <if test="networkExtra != null">
+        c_network_extra = #{networkExtra,jdbcType=VARCHAR},
+      </if>
+      <if test="buildId != null">
+        c_build_id = #{buildId,jdbcType=VARCHAR},
+      </if>
+      <if test="buildDisplay != null">
+        c_build_display = #{buildDisplay,jdbcType=VARCHAR},
+      </if>
+      <if test="buildTime != null">
+        c_build_time = #{buildTime,jdbcType=VARCHAR},
+      </if>
+      <if test="buildFp != null">
+        c_build_fp = #{buildFp,jdbcType=VARCHAR},
+      </if>
+      <if test="lac != null">
+        c_lac = #{lac,jdbcType=VARCHAR},
+      </if>
+      <if test="regionCode != null">
+        c_region_code = #{regionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        n_lng = #{lng,jdbcType=DOUBLE},
+      </if>
+      <if test="lat != null">
+        n_lat = #{lat,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null">
+        t_create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevTime != null">
+        t_prev_time = #{prevTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastTime != null">
+        t_last_time = #{lastTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where n_id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="iov.spring.entity.Device">
+    update iov_device
+    set c_model = #{model,jdbcType=VARCHAR},
+      c_imei = #{imei,jdbcType=VARCHAR},
+      c_uuid = #{uuid,jdbcType=VARCHAR},
+      c_mid = #{mid,jdbcType=VARCHAR},
+      c_imsi = #{imsi,jdbcType=VARCHAR},
+      c_iccid = #{iccid,jdbcType=VARCHAR},
+      c_sim_state = #{simState,jdbcType=VARCHAR},
+      c_phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      c_phone_type = #{phoneType,jdbcType=VARCHAR},
+      c_hard_ver = #{hardVer,jdbcType=VARCHAR},
+      c_screen = #{screen,jdbcType=VARCHAR},
+      c_rom = #{rom,jdbcType=VARCHAR},
+      c_sdcard = #{sdcard,jdbcType=VARCHAR},
+      c_mac = #{mac,jdbcType=VARCHAR},
+      c_network = #{network,jdbcType=VARCHAR},
+      c_network_name = #{networkName,jdbcType=VARCHAR},
+      c_bssid = #{bssid,jdbcType=VARCHAR},
+      c_network_extra = #{networkExtra,jdbcType=VARCHAR},
+      c_build_id = #{buildId,jdbcType=VARCHAR},
+      c_build_display = #{buildDisplay,jdbcType=VARCHAR},
+      c_build_time = #{buildTime,jdbcType=VARCHAR},
+      c_build_fp = #{buildFp,jdbcType=VARCHAR},
+      c_lac = #{lac,jdbcType=VARCHAR},
+      c_region_code = #{regionCode,jdbcType=VARCHAR},
+      n_lng = #{lng,jdbcType=DOUBLE},
+      n_lat = #{lat,jdbcType=DOUBLE},
+      t_create_time = #{createTime,jdbcType=TIMESTAMP},
+      t_prev_time = #{prevTime,jdbcType=TIMESTAMP},
+      t_last_time = #{lastTime,jdbcType=TIMESTAMP}
+    where n_id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</mapper>
