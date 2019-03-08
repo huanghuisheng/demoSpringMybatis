@@ -14,15 +14,14 @@ public class Test {
 		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"applicationContext.xml");  
-		  
-	        context.start();  
+KJFDJFKSDJFKJDS
 	    
 	        SqlSessionTemplate sqlSession =  (SqlSessionTemplate) context.getBean("sqlSessionTemplate");  
 	        
 		Test test=new Test();
 		
 		
-		
+	JKJDFKLJSDKLFJKLSJ	
 		
 		
 
